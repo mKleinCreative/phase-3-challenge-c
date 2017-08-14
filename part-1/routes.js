@@ -9,20 +9,23 @@ router.get('/shout/:word', (request, response, next) => {
 })
 
 router.post('/array/merge', (request, response, next) => {
+  function isArray(array) {
+    typeof array === 'object'
+  }
   
   const a = request.body.a
   const b = request.body.b
-  if (a !typeof Array || b !typeof Array) {
-    const error = new Error()
-    response.send({error})
-  } else{
+  console.log( '---===isArray(a)===---', isArray(a) ); 
+  if ( isArray(a) !== true || isArray(b) !== true )  {
     var result = a.reduce( (arr, v, i) => {
       return arr.concat(v, b[i]); 
     }, []);
     response.send( {result} )
-    next()
+  } else {
+    next(err)
   }
 })
+
 
 
 module.exports = router;
