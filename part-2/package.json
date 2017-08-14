@@ -1,0 +1,19 @@
+{
+  "name": "part-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha database_test.js",
+    "db:create": "createdb hotel_db",
+    "db:drop": "dropdb hotel_db",
+    "db:setup": "psql hotel_db < ./schema.sql",
+    "db:seed": "psql hotel_db < ./load-data.sql"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  }
+}
