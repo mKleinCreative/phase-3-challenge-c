@@ -21,14 +21,8 @@ const closeButton = document.querySelector('.modal-close-button')
 
 
 function populateModal( roomInfo ) {
-  
-  console.log( '---===modalRoom===---', modalRoom ); 
-  console.log( '---===totalNights===---', totalNights.value );
-  console.log( '---===modalTotal===---', modalTotal );  
-  console.log( '---===totalNights===---', totalNights ); 
   modal.style.display = 'block'
   let currentRoomInfo = roomInfo.parentElement.parentElement.children
-  console.log( '---===currentRoomInfo===---', currentRoomInfo ); 
   modalRoomNumber.textContent = "Room Number: " + currentRoomInfo[0].textContent
   modalRate.textContent = currentRoomInfo[2].textContent + " / night"
   modalTotal.textContent = "Total " + currentRoomInfo[2].textContent
@@ -46,6 +40,7 @@ roomTable.addEventListener('click', (event) => {
 
 closeButton.addEventListener('click', () => {
   modal.style.display = 'none'
+  totalNights.value = 1
 })
 
 // console.log( '---===modalInfo===---', modalInfo ); 
