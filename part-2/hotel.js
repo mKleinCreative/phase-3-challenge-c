@@ -1,30 +1,30 @@
 const { listAllGuests,
         listAllRooms,
-        listUpcomingBookings } = require('./database.js')
+        listUpcomingBookings } = require('./database')
 
 const { printGuestsToConsole,
         printRoomsToConsole,
-        printUpcomingBookingsToConsole } = require('./format.js')
+        printUpcomingBookingsToConsole } = require('./format')
 
 const input = process.argv[2]
 const inputOptions = process.argv[3]
 
-if ( input === 'guests' ) {
-  listAllGuests()
-    .then( (results) => {
-      printGuestsToConsole(results)
+if ( input === "guests" ) {
+  listAllGuests( inputOptions )
+    .then( data => {
+      printGuestsToConsole(data)
       process.exit(0)
     })
-} else if ( input === 'rooms' ) {
-  listAllRooms()
-    .then( (results) => {
-      printRoomsToConsole(results)
+} else if ( input === "rooms" ) {
+  listAllRooms( inputOptions )
+    .then( data => {
+      printRoomsToConsole(data)
       process.exit(0)
     })
-} else if ( input === 'bookings' ) {
-  listUpcomingBookings()
-    .then( (results) => {
-      printUpcomingBookingsToConsole(results)
+} else if ( input === "bookings" ) {
+  listUpcomingBookings( inputOptions )
+    .then( data => {
+      printUpcomingBookingsToConsole(data)
       process.exit(0)
     })
 } else {
