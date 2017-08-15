@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hotel</title>
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Hotel</h1>
+    </header>
+
+    <div class="content">
+      <h1>Rooms</h1>
+      <table class="room-list">
+        <thead>
+          <th>Room #</th>
+          <th>Capacity</th>
+          <th>Rate / Night</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr id="room2B" class="room">
+            <td class="room-number">2B</td>
+            <td class="room-capacity">4</td>
+            <td class="room-nightly-rate">$59.99</td>
+            <td><button class="book-room">Book</button></td>
+          </tr>
+          <tr id="room2A" class="room">
+            <td class="room-number">2A</td>
+            <td class="room-capacity">4</td>
+            <td class="room-nightly-rate">$59.99</td>
+            <td><button class="book-room">Book</button></td>
+          </tr>
+          <tr id="room3A" class="room">
+            <td class="room-number">3A</td>
+            <td class="room-capacity">2</td>
+            <td class="room-nightly-rate">$45.00</td>
+            <td><button class="book-room">Book</button></td>
+          </tr>
+          <tr id="room3B" class="room">
+            <td class="room-number">3B</td>
+            <td class="room-capacity">2</td>
+            <td class="room-nightly-rate">$45.00</td>
+            <td><button class="book-room">Book</button></td>
+          </tr>
+          <tr id="room3C" class="room">
+            <td class="room-number">3C</td>
+            <td class="room-capacity">3</td>
+            <td class="room-nightly-rate">$52.64</td>
+            <td><button class="book-room">Book</button></td>
+          </tr>
+          <tr id="room4A" class="room">
+            <td class="room-number">4A</td>
+            <td class="room-capacity">4</td>
+            <td class="room-nightly-rate">$59.99</td>
+            <td><button class="book-room">Book</button></td>
+          </tr>
+          <tr id="room4B" class="room">
+            <td class="room-number">4B</td>
+            <td class="room-capacity">4</td>
+            <td class="room-nightly-rate">$59.99</td>
+            <td><button class="book-room">Book</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal modal-closed">
+      <div class="modal-content">
+        <div class="modal-title">
+          <h2>Booking</h2>
+          <button class="modal-close-button">&times;</button>
+        </div>
+        <div class="modal-information">
+          <div class="modal-room-stay-info">
+            <div class="modal-room-number"></div>
+            <div class="modal-room-rate"></div>
+          </div>
+          <div class="modal-check-in">
+            Check-in Date <input type="date" class="modal-date" >
+          </div>
+          <div class="modal-nights">
+            Nights <input type="number" value="1">
+          </div>
+          <div class="modal-total"></div>
+          <button type="button">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./modal.js">
+      
+    </script>
+  </body>
+</html>
