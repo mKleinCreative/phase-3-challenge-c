@@ -12,12 +12,14 @@ const inputOptions = process.argv[3]
 if ( input === "guests" ) {
   listAllGuests( inputOptions )
     .then( data => {
+      // console.log( '---===data[0]===---', data.name ); 
       printGuestsToConsole(data)
       process.exit(0)
     })
 } else if ( input === "rooms" ) {
   listAllRooms( inputOptions )
     .then( data => {
+      // console.log( '<3333333 data in function <3333333', data ); 
       printRoomsToConsole(data)
       process.exit(0)
     })

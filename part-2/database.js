@@ -10,10 +10,17 @@ const listAllGuests = () =>
     FROM
       guests;
     `
-  )
+  ).then( (data) => {
+    console.log( '---===JSON.stringify(data)===---', String(JSON.stringify(data)) ); 
+    return String(data)
+    // return JSON.stringify(data)
+  })
+  .catch( error => {
+    console.log( '---===guest error===---', error ); 
+  })
 
 
-const listAllRooms = () =>
+const listAllRooms = ( available ) =>
   db.many(
     `
       SELECT 
@@ -34,8 +41,13 @@ const listAllRooms = () =>
         rooms
       ON
         rooms.id=bookings.room_id;
-    `
-  )
+    `)
+    .then( (data) => {
+      return JSON.stringify(data)
+    })
+    .catch( (error) => {
+      console.log( '---===room error===---', error ); 
+    })
 
 const listUpcomingBookings = () =>
   db.many(
@@ -52,7 +64,14 @@ const listUpcomingBookings = () =>
         check_in
       ASC;
     `
-  )
+  ).then( data => {
+    console.log( '---===data from bookings===---', data ); 
+    return data
+  })
+  .catch( error => {
+    console.log( '---===booking error===---', error ); 
+  })
+
 
 module.exports = {
   listAllGuests,
