@@ -12,10 +12,9 @@ router.post('/array/merge', (request, response, next) => {
   function isArray(array) {
     typeof array === 'object'
   }
-  
+
   const a = request.body.a
   const b = request.body.b
-  console.log( '---===isArray(a)===---', isArray(a) ); 
   if ( isArray(a) !== true || isArray(b) !== true )  {
     var result = a.reduce( (arr, v, i) => {
       return arr.concat(v, b[i]); 
@@ -25,7 +24,5 @@ router.post('/array/merge', (request, response, next) => {
     next(err)
   }
 })
-
-
 
 module.exports = router;

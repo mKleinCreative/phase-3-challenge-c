@@ -4,26 +4,31 @@ const { listAllGuests, listAllRooms, listAllBookings } = require('./database.js'
 
 describe( 'Guests', function(){
   it('list all guests.', function(){
+    
+    expect(listAllGuests).to.be.a('function')
+    
     return listAllGuests()
     .then(
       data => {
+        expect(data[0].hasOwnProperty('id')).to.be.true
         let result = data.map(data => {
-          return data
+          return [data]
         })
         console.log(data)
       }
     )
   })
 })
-describe( 'Rooms', function(){
+describe.only( 'Rooms', function(){
   it('list all rooms.', function(){
     return listAllRooms()
     .then( data => {
-      console.log( '<3333333 stuff <3333333' ); 
+      console.log( data ); 
+      expect(data[0].length).to.equal(3)
     })
   })
   it('list only rooms with availability when --available option is provided.', function(){
-    return listAllRooms()
+    return listAllRooms( --available )
     .then( data => {
       console.log( '<3333333 stuff <3333333' ); 
     })

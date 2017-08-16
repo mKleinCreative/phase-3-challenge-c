@@ -1,5 +1,6 @@
 const { listAllGuests,
         listAllRooms,
+        listAllAvailableRooms,
         listUpcomingBookings } = require('./database')
 
 const { printGuestsToConsole,
@@ -17,14 +18,21 @@ if ( input === "guests" ) {
       process.exit(0)
     })
 } else if ( input === "rooms" ) {
-  listAllRooms( inputOptions )
-    .then( data => {
-      // console.log( '<3333333 data in function <3333333', data ); 
-      printRoomsToConsole(data)
-      process.exit(0)
-    })
+    if ( inputOptions === "--available" ) {
+      listAllAvailableRooms()
+      .then( data => {
+        printRoomsToConsole(data)
+        process.exit(0)
+      })
+    } else {
+      listAllRooms()
+      .then( data => {
+        printRoomsToConsole(data)
+        process.exit(0)
+      })
+    }
 } else if ( input === "bookings" ) {
-  listUpcomingBookings( inputOptions )
+  let data = listUpcomingBookings( inputOptions )
     .then( data => {
       printUpcomingBookingsToConsole(data)
       process.exit(0)
