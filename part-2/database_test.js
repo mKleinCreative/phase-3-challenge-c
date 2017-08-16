@@ -34,23 +34,22 @@ describe( 'Rooms', function(){
   })
 })
 
-describe.only( 'Bookings', function(){
+describe( 'Bookings', function(){
   it('list all upcoming room bookings (soonest check-in date first)).', function(){
     return listUpcomingBookings()
     .then( data => {
-      console.log( '---===data===---', data ); 
+      data.forEach( checkIn => {
+        expect(data[0][2] <= checkIn[2]).to.equal(true)
+      })
     })
   })
-  it('list bookings for one room with the soonest check-in date first when room argument is provided.', function(){
-    return listUpcomingBookings()
+  it('list bookings for one room with the soonest check-in date first when room argument is provided.', function() {
+    return listUpcomingBookings( '3B' )
     .then( data => {
-      console.log( '<3333333 stuff <3333333' ); 
-    })
-  })
-  it('list all upcoming room bookings (soonest check-in date first).', function(){
-    return listUpcomingBookings()
-    .then( data => {
-      console.log( '<3333333 stuff <3333333' ); 
+      data.forEach( checkIn => {
+        expect(data[0][2] <= checkIn[2]).to.equal(true)
+        expect(checkIn[0]).to.eql('3B')
+      })
     })
   })
 })
