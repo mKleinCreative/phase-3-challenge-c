@@ -4,7 +4,6 @@
 // 20: Whenever the number of nights changes, the total is updated automatically
 // 20: Clicking on the "X" button in the "Booking" modal closes the modal
 
-
 const modal = document.querySelector('.modal')
 const modalInfo = document.querySelector('.modal-information')
 const modalRoom = modalInfo.children
@@ -14,11 +13,8 @@ const totalNights = modalRoom[2].children[0]
 const modalTotal = modalRoom[3]
 const roomTable = document.querySelector('tbody')
 const rooms = roomTable.querySelectorAll('tr')
-// const roomElements = rooms.getElementsByTagName('td')
 const bookRoomButton = document.querySelectorAll('button .book-room')
 const closeButton = document.querySelector('.modal-close-button')
-
-
 
 function populateModal( roomInfo ) {
   modal.style.display = 'block'
@@ -37,19 +33,9 @@ roomTable.addEventListener('click', (event) => {
   }
 })
 
-
 closeButton.addEventListener('click', () => {
   modal.style.display = 'none'
   totalNights.value = 1
 })
 
-// console.log( '---===modalInfo===---', modalInfo ); 
-// console.log( '---===modal===---', modal ); 
-// console.log( '---===rooms===---', rooms ); 
-// // console.log( '---===roomElements===---', roomElements );
-// console.log( '---===bookRoomButton===---', bookRoomButton );  
-
-
-
 bookRoomButton.forEach( element => element.addEventListener('click', populateModal ))
-
