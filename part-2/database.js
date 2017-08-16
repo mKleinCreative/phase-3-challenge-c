@@ -86,7 +86,11 @@ const listUpcomingBookings = (roomNumber) => {
     sqlString = `SELECT
         rooms.number, guests.name, TO_CHAR(check_in, 'YYYY-MM-DD') AS check_in, TO_CHAR(check_out, 'YYYY-MM-DD') AS check_out
       FROM
-        rooms, bookings, guests
+        bookings
+      JOIN
+        rooms ON bookings.room_id=rooms.id
+      JOIN
+        guests ON bookings.guest_id=guests.id
       WHERE
         bookings.check_out > current_date
       AND
@@ -98,17 +102,28 @@ const listUpcomingBookings = (roomNumber) => {
       ASC;
     `
   } else {
-    sqlString = `SELECT
-        rooms.number, guests.name, TO_CHAR(check_in, 'YYYY-MM-DD') AS check_in, TO_CHAR(check_out, 'YYYY-MM-DD') AS check_out
-      FROM
-        rooms, bookings, guests
-      WHERE
-        bookings.check_out > current_date
-      GROUP BY
-        rooms.number, guests.name, bookings.check_in, bookings.check_out
-      ORDER BY
-        check_in
-      ASC;
+    sqlString = ` SELECT 
+    rooms.number, 
+    guests.name, 
+    TO_CHAR(check_in, 'YYYY-MM-DD') 
+  AS 
+    check_in, 
+    TO_CHAR(check_out, 'YYYY-MM-DD') 
+  AS 
+    check_out
+  FROM 
+    bookings 
+  JOIN
+  	rooms ON bookings.room_id=rooms.id
+  JOIN
+  	guests ON bookings.guest_id=guests.id
+  WHERE 
+    bookings.check_in > CURRENT_DATE
+  GROUP BY 
+    rooms.number, guests.name, bookings.check_in, bookings.check_out
+  ORDER BY 
+    check_in ASC
+; 
     `
   }
   return Promise.resolve(
