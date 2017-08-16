@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 router.get('/shout/:word', (request, response, next) => {
   const { word } = request.params;
   response.status(200).send( word.toUpperCase() + '!!!')
